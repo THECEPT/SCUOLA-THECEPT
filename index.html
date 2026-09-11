@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO 與社群分享優化 -->
+    <title>SCUOLA 體驗‧學習 | 專為中小學而設的成長及團隊課程</title>
+    <meta name="description" content="SCUOLA 專為香港中小學及教育機構提供高質素「體驗‧學習」訓練課程，涵蓋全級訓練營、SEN支援、領袖生及學生會幹事培訓。">
+    <meta name="keywords" content="SCUOLA, 體驗學習, 中小學訓練營, 領袖生培訓, 團隊建立, 成長營">
+    
+    <!-- Open Graph (OG) 標籤 -->
+    <meta property="og:title" content="SCUOLA 體驗‧學習 | 專為中小學而設的成長及團隊課程">
+    <meta property="og:description" content="EVERY MOMENT IS EDUCATION — 專為中小學學校與教師設計，啟發成長、提升溝通及激發領導潛能。">
+    <meta property="og:type" content="website">
+
+    <!-- 1. 引入 EmailJS SDK v4 並初始化 -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // 初始化 EmailJS Public Key
+            emailjs.init({
+              publicKey: "mp85FIq-fKKcngydr",
+            });
+        })();
+    </script>
+
+    <style>
+        /* 全局與基礎樣式 */
+        :root {
+            --primary-color: #f57f17; /* 活力黃 / 琥珀黃 */
+            --primary-hover: #fbc02d; /* Hover 明亮黃 */
+            --secondary-color: #0277bd; /* 海洋藍 */
+            --dark-color: #212121;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --header-height: 70px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: "PingFang TC", "Microsoft JhengHei", -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height);
+        }
+
+        body {
+            color: var(--dark-color);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 導覽列 Header */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            height: var(--header-height);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            height: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        .logo span {
+            font-size: 0.85rem;
+            color: #666;
+            display: block;
+            font-weight: normal;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-cta {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s, color 0.3s;
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--primary-hover);
+            color: var(--dark-color);
+        }
+
+        .btn-cta:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+
+        /* 行動裝置選單按鈕 */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--dark-color);
+            border-radius: 2px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hamburger 切換動畫 */
+        .menu-toggle.active span:nth-child(1) {
+            transform: translateY(8px) rotate(45deg);
+        }
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-toggle.active span:nth-child(3) {
+            transform: translateY(-8px) rotate(-45deg);
+        }
+
+        /* Hero 區塊 */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), 
+                        url('https://images.unsplash.com/photo-1517649763962-0c623266010b?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+            height: calc(80vh - var(--header-height));
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            margin-top: var(--header-height);
+            padding: 0 1rem;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        /* 通用 Section 樣式 */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            display: block;
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* 三大課程模組 */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            padding: 2rem;
+            border-top: 5px solid var(--primary-color);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .program-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .program-card .badge {
+            display: inline-block;
+            background-color: #efefef;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .program-card ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+
+        .program-card li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* 管理系統區塊與課程設計重點區塊通用樣式 */
+        .system-section {
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            padding: 3rem 2rem;
+        }
+
+        .system-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .system-box {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .system-box h3 {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* 合作學校區塊 */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .partner-card {
+            background-color: var(--light-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .partner-card h3 {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* 合作流程區塊樣式 */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .process-card {
+            background: var(--light-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .process-step {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            line-height: 1;
+            background: #e1f5fe;
+            padding: 0.5rem 0.8rem;
+            border-radius: 6px;
+        }
+
+        .process-info h3 {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 0.4rem;
+        }
+
+        .process-info p {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* 活動剪影樣式卡片 */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            padding: 0.8rem 1rem;
+            background: #fff;
+            font-weight: bold;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        /* 表單與 Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: var(--white);
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: 2px solid var(--primary-color);
+        }
+
+        .contact-form button {
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #444;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+
+        .mobile-cta {
+            display: none;
+        }
+
+        /* 響應式微調 */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                padding: 1.5rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                gap: 1.2rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-cta-btn {
+                display: none;
+            }
+
+            .mobile-cta {
+                display: inline-block;
+                margin-top: 0.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                SCUOLA
+                <span>體驗‧學習 SINCE 2010</span>
+            </a>
+            
+            <button class="menu-toggle" id="mobile-menu" aria-label="切換選單列" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="nav-list">
+                <li><a href="#about">關於我們</a></li>
+                <li><a href="#programs">課程系統</a></li>
+                <li><a href="#management">教學管理</a></li>
+                <li><a href="#partners">合作學校</a></li>
+                <li><a href="#process">合作流程</a></li>
+                <li><a href="#contact">聯絡我們</a></li>
+                <li class="mobile-cta"><a href="#contact" class="btn-cta">立即查詢 / 預約</a></li>
+            </ul>
+            
+            <a href="#contact" class="btn-cta nav-cta-btn">立即查詢 / 預約</a>
+        </div>
+    </header>
+
+    <!-- HERO 區塊 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>為學生而設的體驗‧學習課程</h1>
+            <p>EVERY MOMENT IS EDUCATION — 專為中小學學校與教師設計，啟發成長、提升溝通及激發領導潛能。</p>
+            <a href="#programs" class="btn-cta">探索三大課程模組</a>
+        </div>
+    </section>
+
+    <!-- 關於我們 / 課程設計重點 -->
+    <section id="about">
+        <h2 class="section-title">看似平凡的不平凡</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">
+            SCUOLA 專為學校及教育機構開發高質素的「體驗‧學習」訓練課程，為學校與老師減省時間與負擔。
+        </p>
+
+        <div class="system-section">
+            <h3 style="text-align: center; color: var(--dark-color); font-size: 1.4rem; margin-bottom: 1.5rem;">
+                SCUOLA 課程設計重點 (Programming)
+            </h3>
+            <div class="system-grid">
+                <div class="system-box">
+                    <h3>1. 客製化與彈性安排</h3>
+                    <p><strong>精準設計：</strong>因應學生需求、教學目標及社會環境變化，從活動選擇、模式到物資裝備皆全方位量身打造。</p>
+                    <br>
+                    <p><strong>多元模式：</strong>支援半日、一天至數天的課程，形式涵蓋戶外大自然、城市任務或室內挑戰策略項目。</p>
+                </div>
+                <div class="system-box">
+                    <h3>2. 行政與後勤支援</h3>
+                    <p><strong>一站式統籌：</strong>完善安排住宿、交通及膳食等後勤細節。</p>
+                    <br>
+                    <p><strong>即時動態調整：</strong>配合活動前後發展與流程變化做出彈性調節，確保學習效能與安全永遠居首位。</p>
+                </div>
+                <div class="system-box">
+                    <h3>3. 全方位學習目標</h3>
+                    <p>涵蓋個人突破、內心反思、團隊溝通、策略解難、同理心、責任感及領導才能等多元培育。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 三大課程模組 -->
+    <section id="programs">
+        <h2 class="section-title">三大核心課程分類</h2>
+        <div class="program-grid">
+            <!-- GRADE -->
+            <article class="program-card">
+                <h3>GRADE 全級學生專用</h3>
+                <span class="badge">導師學生比例 1:12 - 1:15</span>
+                <p>針對特定年級需要，可承接 120 人或以上全級學生，配合班主任活動安排。</p>
+                <ul>
+                    <li>小一 / 中一新生訓練營</li>
+                    <li>小二 / 中二成長挑戰營</li>
+                    <li>小三 / 中三預備營</li>
+                    <li>小四 / 中四團隊訓練營</li>
+                    <li>小五 / 中五生涯規劃營</li>
+                    <li>小六 / 中六訂立目標營</li>
+                </ul>
+            </article>
+            <!-- FOCUS -->
+            <article class="program-card">
+                <h3>FOCUS 重點學習需要</h3>
+                <span class="badge">導師學生比例 1:8 - 1:12</span>
+                <p>針對性學習需要，提高學生合群能力，認清目標並增強自理與解難能力。</p>
+                <ul>
+                    <li>個人成長訓練</li>
+                    <li>行為改變課程</li>
+                    <li>特別學習需要（SEN）支援</li>
+                    <li>潛能開發與團隊精神</li>
+                </ul>
+            </article>
+            <!-- SEED -->
+            <article class="program-card">
+                <h3>SEED 學校種子培訓</h3>
+                <span class="badge">導師學生比例 1:8 - 1:12</span>
+                <p>特別為學生團隊設計的重點訓練，提升溝通技巧、自我認識與處事能力。</p>
+                <ul>
+                    <li>學生會 / 班會幹事培訓</li>
+                    <li>領袖生（PREFECT）訓練營</li>
+                    <li>校隊團隊建立</li>
+                    <li>學會幹事訓練</li>
+                </ul>
+            </article>
+        </div>
+    </section>
+
+    <!-- 課程管理系統 -->
+    <section id="management">
+        <div class="system-section">
+            <h2 class="section-title">專業課程管理與安全系統</h2>
+            <div class="system-grid">
+                <div class="system-box">
+                    <h3>#HEXA 六項課程管理系統</h3>
+                    <p>確保 SCOPE（範圍）、OUTCOME（效果）、PROGRAMMING（設計）、FACILITATION（啟導）、LOGISTIC（流程）及 SAFETY（安全）均達至最高標準。</p>
+                </div>
+                <div class="system-box">
+                    <h3>#BDA 課程進度追蹤系統</h3>
+                    <p>每課程設專屬專案經理（PROJECT MANAGER），讓學校負責老師隨時掌控籌備進度與最新資訊。</p>
+                </div>
+                <div class="system-box">
+                    <h3>#PROBASE 專業教練團隊</h3>
+                    <p>導師不只是活動操作員，更是價值觀的啟導者，協助學生進行深度反思與轉化。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作學校歷史 -->
+    <section id="partners">
+        <h2 class="section-title">以往合作學校</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">歷年來深受多間中小學及教育機構信任（部分合作學校名單）</p>
+        
+        <div class="partners-grid">
+            <div class="partner-card"><h3>英皇書院</h3></div>
+            <div class="partner-card"><h3>鄧鏡波學校</h3></div>
+            <div class="partner-card"><h3>梁式芝書院</h3></div>
+            <div class="partner-card"><h3>棉紡會中學</h3></div>
+            <div class="partner-card"><h3>聖公會基孝中學</h3></div>
+            <div class="partner-card"><h3>荃灣聖芳濟中學</h3></div>
+            <div class="partner-card"><h3>福建中學附屬學校</h3></div>
+            <div class="partner-card"><h3>鳳溪廖萬石堂中學</h3></div>
+            <div class="partner-card"><h3>聖公會何澤芸小學</h3></div>
+            <div class="partner-card"><h3>路德會呂祥光中學</h3></div>
+            <div class="partner-card"><h3>佛教善德英文中學</h3></div>
+            <div class="partner-card"><h3>庇理羅士女子中學</h3></div>
+            <div class="partner-card"><h3>瑪利諾神父教會學校</h3></div>
+            <div class="partner-card"><h3>保良局甲子何玉清中學</h3></div>
+            <div class="partner-card"><h3>地利亞修女紀念學校（百老匯）</h3></div>
+            <div class="partner-card"><h3>香港神託會主辦馬錦明慈善基金馬可賓紀念中學</h3></div>
+        </div>
+    </section>
+
+    <!-- 精彩活動剪影 -->
+    <section id="gallery">
+        <h2 class="section-title">精彩活動剪影 Activity Highlights</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">記錄學生在體驗學習中的成長、突破與團隊合作時刻</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/d/1byU6crS7Jh2qJ5IzfZIaUrACKfw93lVH" alt="團隊建立訓練" loading="lazy">
+                <div class="gallery-caption">團隊建立訓練</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/d/1C5wM4VV1oW6GMLGQVY8aMSzhl9SnSwT7" alt="全級團隊訓練" loading="lazy">
+                <div class="gallery-caption">全級團隊訓練</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/d/1QO-clYzBwul80U4UIjejTXFgon2Pr3j0" alt="任務與策略挑戰" loading="lazy">
+                <div class="gallery-caption">任務與策略挑戰</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/d/1VN0rAW2GmD-lAO5mvoMd20Pc28oW0L3Q" alt="領袖生訓練" loading="lazy">
+                <div class="gallery-caption">領袖生及幹事領袖訓練</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/d/1LXTHl-EXSL09WDOfhdukcU_KXBCTFS4q" alt="團隊溝通及解難" loading="lazy">
+                <div class="gallery-caption">團隊溝通及解難</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://lh3.googleusercontent.com/d/1qY3zkdUflHAkj3FXcTHjTTwrGVr7mjG9" alt="戶外領袖訓練" loading="lazy">
+                <div class="gallery-caption">戶外領袖訓練</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作流程 (How to Work With Us) -->
+    <section id="process">
+        <h2 class="section-title">合作流程 How to Work With Us</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 2rem;">清晰透明的 6 大步驟，為學校打造專屬訓練體驗</p>
+        
+        <div class="process-grid">
+            <div class="process-card">
+                <div class="process-step">01</div>
+                <div class="process-info">
+                    <h3>Consultation 諮詢</h3>
+                    <p>深入了解學校需求、預算與預計學習成效，確立大致合作方向。</p>
+                </div>
+            </div>
+            <div class="process-card">
+                <div class="process-step">02</div>
+                <div class="process-info">
+                    <h3>Scope & Objectives 目標設定</h3>
+                    <p>確立課程主題、範疇與核心學習重點，確保符合教學期望。</p>
+                </div>
+            </div>
+            <div class="process-card">
+                <div class="process-step">03</div>
+                <div class="process-info">
+                    <h3>Activities Selection 活動選擇</h3>
+                    <p>精選適合的戶外大自然、城市任務或室內挑戰體驗活動。</p>
+                </div>
+            </div>
+            <div class="process-card">
+                <div class="process-step">04</div>
+                <div class="process-info">
+                    <h3>Programming & Proposal 方案企劃</h3>
+                    <p>制定完整課程流程、細節安排與詳細企劃書供學校審閱。</p>
+                </div>
+            </div>
+            <div class="process-card">
+                <div class="process-step">05</div>
+                <div class="process-info">
+                    <h3>Execution & Logistics 執行與後勤</h3>
+                    <p>專業教練團隊全程帶領，並全權統籌住宿、交通、膳食與安全配套。</p>
+                </div>
+            </div>
+            <div class="process-card">
+                <div class="process-step">06</div>
+                <div class="process-info">
+                    <h3>Debrief & Review 反思與檢討</h3>
+                    <p>進行深度導賞反思，並向學校提供完整的成果檢討與回饋報告。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / 聯絡表單 -->
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="contact-info">
+                <h2>聯絡 SCUOLA 團隊</h2>
+                <p style="margin-top: 1rem;">歡迎學校同工查詢或預訂自訂課程，我們的課程顧問將儘快回覆。</p>
+                <br>
+                <p><strong>WhatsApp：</strong> <a href="https://wa.me/85264357704" target="_blank" rel="noopener">6435 7704</a></p>
+                <p><strong>查 詢 熱 線：</strong> <a href="tel:62333445">6233 3445</a></p>
+                <p><strong>電 郵 地 址：</strong> <a href="mailto:scuola@thecept.com">scuola@thecept.com</a></p>
+            </div>
+            <div class="contact-form">
+                <h3>學校查詢登記表</h3>
+                <!-- EmailJS 表單 -->
+                <form id="contact-form">
+                    <input type="text" name="school_name" placeholder="學校名稱" aria-label="學校名稱" required>
+                    <input type="text" name="teacher_title" placeholder="負責老師 / 職銜" aria-label="負責老師 / 職銜" required>
+                    <input type="tel" name="phone" placeholder="聯絡電話" aria-label="聯絡電話" required>
+                    <input type="email" name="email" placeholder="電郵地址" aria-label="電郵地址" required>
+                    <textarea name="message" rows="3" placeholder="請簡述擬舉辦之課程需求（如年級、預計人數、預計月份、活動目標）" aria-label="課程需求"></textarea>
+                    <button type="submit" class="btn-cta" id="submit-btn">提交查詢</button>
+                </form>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2026 THE CEPT - SCUOLA. ALL RIGHTS RESERVED. EVERY MOMENT IS EDUCATION.
+        </div>
+    </footer>
+
+    <script>
+        // 1. 行動裝置選單開關
+        const menuToggle = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            const isActive = navList.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            menuToggle.setAttribute('aria-expanded', isActive);
+        });
+
+        // 點擊連結後自動關閉行動選單
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+                menuToggle.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // 2. EmailJS 表單提交發送邏輯 (適配 v4 SDK)
+        const contactForm = document.getElementById('contact-form');
+        const submitBtn = document.getElementById('submit-btn');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // 停用按鈕並顯示傳送中狀態
+            submitBtn.disabled = true;
+            submitBtn.textContent = '傳送中...';
+
+            const serviceID = 'service_enb5vtl';
+            const templateID = 'template_51hvajq';
+
+            emailjs.sendForm(serviceID, templateID, this)
+                .then(function() {
+                    alert('感謝您的查詢！訊息已成功傳送，我們的課程顧問會儘快與您聯絡。');
+                    contactForm.reset();
+                })
+                .catch(function(error) {
+                    alert('傳送失敗，請稍後再試或直接 WhatsApp 聯絡我們。錯誤資訊: ' + JSON.stringify(error));
+                })
+                .finally(function() {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = '提交查詢';
+                });
+        });
+    </script>
+</body>
+</html>
