@@ -1,1 +1,0 @@
-# SCUOLA-THECEPT
